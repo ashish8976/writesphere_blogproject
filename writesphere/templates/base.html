@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WriteSphere — Where Stories Live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="{% url 'index'%}" class="logo">Write<span>Sphere</span></a>
+    <ul class="nav-links">
+      <li><a href="{% url 'index'%}" class="active">Home</a></li>
+      <li><a href="{% url 'explore'%}">Explore</a></li>
+      <li><a href="{% url 'blog_detail' %}">Stories</a></li>
+      <li><a href="{% url 'author'%}">Authors</a></li>
+    </ul>
+    <div class="nav-actions">
+
+  {% if request.session.user_email %}
+      {% if request.session.user_role == 'author'%}
+          <a href="{% url 'dashboard'%}" class="btn btn-ghost"> Dashboard </a>
+      {% endif %}
+      <a href="{% url 'profile' %}" style="text-decoration:none; display:inline-flex; align-items:center;">
+        {% if request.session.user_photo %}
+          <img src="{{ request.session.user_photo }}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;">
+        {% else %}
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1rem;">
+            {{ request.session.user_fname|first|upper }}
+          </div>
+        {% endif %}
+        </a>
+
+      <a href="{% url 'logout'%}" class="btn btn-primary">Logout</a>
+
+       {% else %}
+            <a href="{% url 'login'%}" class="btn btn-ghost">Sign In</a>
+          <a href="{% url 'register'%}" class="btn btn-primary">Get Started</a>
+        {% endif %}
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="{% url 'index'%}">Home</a>
+    <a href="{% url 'explore'%}">Explore</a>
+    <a href="{% url 'blog_detail'%}">Stories</a>
+    <a href="{% url 'author'%}">Authors</a>
+    <a href="{% url 'login'%}">Sign In</a>
+    <a href="{% url 'register'%}">Start Writing</a>
+  </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{% url 'index'%}" class="logo">Write<span>Sphere</span></a>
+        <p>A community for writers who believe in the power of authentic storytelling.</p>
+        <div class="socials">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">ig</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Platform</h5><a href="{% url 'explore'%}">Explore</a><a href="#">Trending</a><a href="#">Categories</a></div>
+      <div class="footer-col"><h5>Writers</h5><a href="{% url 'register'%}">Start Writing</a><a href="dashboard.html">Dashboard</a><a href="create-post.html">New Post</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 WriteSphere. Built with ♥ for storytellers.</p><p>A BlogX Solutions Product</p></div>
+  </div>
+</footer>

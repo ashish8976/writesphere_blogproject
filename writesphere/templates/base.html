@@ -27,23 +27,18 @@
   {% if request.session.user_email %}
       {% if request.session.user_role == 'author'%}
           <a href="{% url 'dashboard'%}" class="btn btn-ghost"> Dashboard </a>
+          <a href="{% url 'create_post'%}" class="btn btn-ghost"> Create Post </a>
       {% endif %}
-      <a href="{% url 'profile' %}" style="text-decoration:none; display:inline-flex; align-items:center;">
-        {% if request.session.user_photo %}
-          <img src="{{ request.session.user_photo }}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;">
-        {% else %}
-          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1rem;">
-            {{ request.session.user_fname|first|upper }}
-          </div>
-        {% endif %}
+      <a href="{% url 'profile' %}" style="text-decoration:none; display:inline-flex; align-items:center;">4
+        Profile
         </a>
 
       <a href="{% url 'logout'%}" class="btn btn-primary">Logout</a>
 
-       {% else %}
-            <a href="{% url 'login'%}" class="btn btn-ghost">Sign In</a>
-          <a href="{% url 'register'%}" class="btn btn-primary">Get Started</a>
-        {% endif %}
+  {% else %}
+      <a href="{% url 'login'%}" class="btn btn-ghost">Sign In</a>
+      <a href="{% url 'register'%}" class="btn btn-primary">Get Started</a>
+  {% endif %}
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -76,9 +71,22 @@
           <a href="#" class="social-btn">ig</a>
         </div>
       </div>
-      <div class="footer-col"><h5>Platform</h5><a href="{% url 'explore'%}">Explore</a><a href="#">Trending</a><a href="#">Categories</a></div>
-      <div class="footer-col"><h5>Writers</h5><a href="{% url 'register'%}">Start Writing</a><a href="dashboard.html">Dashboard</a><a href="create-post.html">New Post</a></div>
-      <div class="footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="{% url 'explore'%}">Explore</a>
+        <a href="#">Trending</a>
+        <a href="#">Categories</a></div>
+        <div class="footer-col">
+           <h5>Writers</h5>
+           <a href="{% url 'register'%}">Start Writing</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="create-post.html">New Post</a>
+        </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">About</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a></div>
     </div>
     <div class="footer-bottom"><p>© 2026 WriteSphere. Built with ♥ for storytellers.</p><p>A BlogX Solutions Product</p></div>
   </div>

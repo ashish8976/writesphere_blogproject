@@ -154,6 +154,9 @@ def resetpassword(request):
 def dashboard(request):
     return render (request, 'dashboard.html')
 
+def create_post(request):
+    return render(request, 'create_post.html')
+
 
 def profile(request):
     user_id = request.session.get('user_id')

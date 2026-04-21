@@ -154,14 +154,14 @@
       <div><p class="eyebrow light">✦ Browse by Topic</p><h2 class="section-title light">Explore <em>Categories</em></h2></div>
     </div>
     <div class="categories-grid">
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#f093fb"><div class="cat-icon">💻</div><h3>Technology</h3><p>2,340 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#43e97b"><div class="cat-icon">✈️</div><h3>Travel</h3><p>1,890 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#fa709a"><div class="cat-icon">🧘</div><h3>Wellness</h3><p>3,100 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#fee140"><div class="cat-icon">🎨</div><h3>Design</h3><p>980 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#4facfe"><div class="cat-icon">🔬</div><h3>Science</h3><p>1,560 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#f5576c"><div class="cat-icon">📖</div><h3>Fiction</h3><p>2,780 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#a18cd1"><div class="cat-icon">🧠</div><h3>Philosophy</h3><p>740 stories</p><div class="cat-arrow">→</div></a>
-      <a href="{% url 'explore'%}" class="cat-card" style="--c:#fda085"><div class="cat-icon">🌍</div><h3>Culture</h3><p>1,230 stories</p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#f093fb"><div class="cat-icon">💻</div><h3>Technology</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#43e97b"><div class="cat-icon">✈️</div><h3>Travel</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#fa709a"><div class="cat-icon">🧘</div><h3>Wellness</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#fee140"><div class="cat-icon">🎨</div><h3>Design</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#4facfe"><div class="cat-icon">🔬</div><h3>Science</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#f5576c"><div class="cat-icon">📖</div><h3>Fiction</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#a18cd1"><div class="cat-icon">🧠</div><h3>Philosophy</h3><p></p><div class="cat-arrow">→</div></a>
+      <a href="{% url 'explore'%}" class="cat-card" style="--c:#fda085"><div class="cat-icon">🌍</div><h3>Culture</h3><p></p><div class="cat-arrow">→</div></a>
     </div>
   </div>
 </section>
@@ -231,7 +231,7 @@
   <div class="container">
     <div class="section-header">
       <div><p class="eyebrow">✦ Community</p><h2 class="section-title">Meet the <em>Authors</em></h2></div>
-      <a href="{% url 'profile'%}" class="btn btn-ghost">All Authors →</a>
+      <a href="{% url 'author'%}" class="btn btn-ghost">All Authors →</a>
     </div>
     <div class="authors-grid">
       <div class="author-card" onclick="location.href='{% url 'profile'%}'">
@@ -259,6 +259,7 @@
 </section>
 
 <!-- CTA -->
+ {% if request.session.user_email %}
 <section class="cta-section">
   <div class="hero-bg-wrap"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="grain"></div></div>
   <div class="container cta-inner">
@@ -268,6 +269,7 @@
     <a href="{% url 'register'%}" class="btn btn-accent btn-lg">Create Your Free Account</a>
   </div>
 </section>
+{% endif %}
 
 <script src="{% static 'js/main.js' %}"></script>
 </body>
